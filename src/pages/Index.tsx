@@ -1,13 +1,30 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AdminSidebar } from "@/components/AdminSidebar";
+import Dashboard from "./Dashboard";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <SidebarProvider>
+      <div className="min-h-screen flex w-full bg-background">
+        <AdminSidebar />
+        
+        <div className="flex-1 flex flex-col">
+          {/* Header */}
+          <header className="h-14 border-b bg-card flex items-center px-6 sticky top-0 z-10">
+            <SidebarTrigger className="mr-4" />
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 bg-gradient-to-br from-primary to-primary-glow rounded-md"></div>
+              <span className="font-semibold text-foreground">Company Task Manager</span>
+            </div>
+          </header>
+
+          {/* Main Content */}
+          <main className="flex-1 p-6">
+            <Dashboard />
+          </main>
+        </div>
       </div>
-    </div>
+    </SidebarProvider>
   );
 };
 
